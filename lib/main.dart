@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart';
+import 'package:http/http.dart';
 
 void main() {
   runApp(MyApp());
@@ -42,20 +43,63 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: GoogleMap(
-        mapType: MapType.hybrid,
-        onMapCreated: _onMapCreated,
-        initialCameraPosition: CameraPosition(
-          target: _center,
-          zoom: 17,
-        ),
+      body: Stack(
+        children: [
+          GoogleMap(
+            mapType: MapType.satellite,
+            myLocationButtonEnabled: true,
+            onMapCreated: _onMapCreated,
+            initialCameraPosition: CameraPosition(
+              target: _center,
+              zoom: 17,
+            ),
+          ),
+          Align(
+            alignment: Alignment.topCenter,
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 60),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 10),
+                    ),
+                    FloatingActionButton(
+                      tooltip: "Hello",
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(right: 10),
+                    ),
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.symmetric(vertical: 25),
+                        decoration: BoxDecoration(color: Colors.blueAccent, borderRadius: BorderRadius.all(Radius.circular(15))),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(right: 10),
+                    ),
+                    FloatingActionButton(
+                      tooltip: "Hello",
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(right: 10),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-        onPressed: (){print("Button Still Works");},
+        onPressed: () {
+          print("Button Still Works");
+        },
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ),
