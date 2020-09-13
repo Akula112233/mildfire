@@ -8,6 +8,7 @@
 .buildlog/
 .history
 .svn/
+.vscode
 
 # IntelliJ related
 *.iml
@@ -42,3 +43,12 @@ app.*.map.json
 
 # Exceptions to above rules.
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+
+# tree-detection
+tree-detection/test_out
+tree-detection/bin/
+tree-detection/lib/
+
+# venv
+include/
+share/
